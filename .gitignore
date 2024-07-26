@@ -1,2 +1,4 @@
 llm-env/
+output/
 *.pyc
+*.csv
