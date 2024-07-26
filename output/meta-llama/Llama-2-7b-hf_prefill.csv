@@ -98,3 +98,23 @@ attn_add,8.4M,33.6MB,0.25,192G,memory,0.00B,16.8MB,16.8MB,0.00B,0.00B,43.7us
 mlp_add,8.4M,33.6MB,0.25,192G,memory,0.00B,16.8MB,16.8MB,0.00B,0.00B,43.7us
 mlp_act,16.8M,50.3MB,0.33,256G,memory,0.00B,33.6MB,16.8MB,0.00B,0.00B,65.5us
 lm_head,131M,262MB,0.50,384G,memory,262MB,8.2KB,64.0KB,0.00B,0.00B,341.4us
+
+
+=== meta-llama/Llama-2-7b-hf nvidia_A6000 w_bit=16 a_bit=16 kv_bit=16 batchsize=1 seqlen=2048===
+layer_name,OPs,Access,arithmetic_intensity,performance,bound,load_weight,load_act,store_act,load_kv_cache,store_kv_cache,inference_time
+q_proj,68.7G,67.1MB,1.0K,155T,compute,33.6MB,16.8MB,16.8MB,0.00B,0.00B,443.8us
+k_proj,68.7G,67.1MB,1.0K,155T,compute,33.6MB,16.8MB,0.00B,0.00B,16.8MB,443.8us
+v_proj,68.7G,67.1MB,1.0K,155T,compute,33.6MB,16.8MB,0.00B,0.00B,16.8MB,443.8us
+out_proj,68.7G,67.1MB,1.0K,155T,compute,33.6MB,16.8MB,16.8MB,0.00B,0.00B,443.8us
+gate_proj,185G,152MB,1.2K,155T,compute,90.2MB,16.8MB,45.1MB,0.00B,0.00B,1.2ms
+up_proj,185G,152MB,1.2K,155T,compute,90.2MB,16.8MB,45.1MB,0.00B,0.00B,1.2ms
+down_proj,185G,152MB,1.2K,155T,compute,90.2MB,45.1MB,16.8MB,0.00B,0.00B,1.2ms
+qk_matmul,34.4G,302MB,113.8,87.4T,memory,0.00B,16.8MB,268MB,16.8MB,0.00B,393.2us
+sv_matmul,34.4G,302MB,113.8,87.4T,memory,0.00B,268MB,16.8MB,16.8MB,0.00B,393.2us
+softmax,671M,537MB,1.2,960G,memory,0.00B,268MB,268MB,0.00B,0.00B,699.1us
+attn_norm,58.7M,33.6MB,1.8,1.3T,memory,0.00B,16.8MB,16.8MB,0.00B,0.00B,43.7us
+mlp_norm,58.7M,33.6MB,1.8,1.3T,memory,0.00B,16.8MB,16.8MB,0.00B,0.00B,43.7us
+attn_add,8.4M,33.6MB,0.25,192G,memory,0.00B,16.8MB,16.8MB,0.00B,0.00B,43.7us
+mlp_add,8.4M,33.6MB,0.25,192G,memory,0.00B,16.8MB,16.8MB,0.00B,0.00B,43.7us
+mlp_act,16.8M,50.3MB,0.33,256G,memory,0.00B,33.6MB,16.8MB,0.00B,0.00B,65.5us
+lm_head,131M,262MB,0.50,384G,memory,262MB,8.2KB,64.0KB,0.00B,0.00B,341.4us
