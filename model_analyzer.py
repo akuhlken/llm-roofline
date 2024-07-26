@@ -18,7 +18,7 @@ ALL_DATA_NAMES = [
 ]
 
 
-class Analyzer:
+class ModelAnalyzer:
     def __init__(self, model_id, hardware, config_file=None, source="huggingface"):
         """
         source: 'huggingface' or 'DiT'
@@ -26,6 +26,7 @@ class Analyzer:
         self.model_id = model_id
         self.hardware = hardware
         if config_file is None:
+            print("here")
             # get the current file directory
             current_dir = os.path.dirname(os.path.abspath(__file__))
             # auto search the config
@@ -38,10 +39,12 @@ class Analyzer:
         ), "config file is not found, please specify it manually."
         print(f"use config file {config_file} for {model_id}")
         if source == "huggingface":
+            print("here2")
             self.model_params = AutoConfig.from_pretrained(
                 model_id, trust_remote_code=True
             )
         else:
+            print("here3")
             if not os.path.exists(f"model_params/{source}.py"):
                 raise Exception(f"model_params/{source}.py is not found")
             # from model_params.DiT import model_params
@@ -50,6 +53,7 @@ class Analyzer:
         self.config = importlib.import_module(
             config_file.replace("/", ".").replace(".py", "")
         )
+        print(self.config)
 
         # temporary variables
         self.results = None

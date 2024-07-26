@@ -40,4 +40,5 @@ results = analyzer.analyze(
     kv_bit=args.kv_bit,
     use_flashattention=args.use_flashattention,
 )
+print(results["total_results"]) # this is the info required for the network wise analysis
 analyzer.save_csv()

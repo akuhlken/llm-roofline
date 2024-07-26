@@ -23,6 +23,7 @@ def get_graph():
         None,
         inference_config,
     )
+    print("total results", total_results)
     return {
         "nodes": nodes,
         "edges": edges,
