@@ -26,7 +26,6 @@ class ModelAnalyzer:
         self.model_id = model_id
         self.hardware = hardware
         if config_file is None:
-            print("here")
             # get the current file directory
             current_dir = os.path.dirname(os.path.abspath(__file__))
             # auto search the config
@@ -39,12 +38,10 @@ class ModelAnalyzer:
         ), "config file is not found, please specify it manually."
         print(f"use config file {config_file} for {model_id}")
         if source == "huggingface":
-            print("here2")
             self.model_params = AutoConfig.from_pretrained(
                 model_id, trust_remote_code=True
             )
         else:
-            print("here3")
             if not os.path.exists(f"model_params/{source}.py"):
                 raise Exception(f"model_params/{source}.py is not found")
             # from model_params.DiT import model_params
@@ -455,10 +452,10 @@ class ModelAnalyzer:
 
         # compute total
         total_results = {"decode": {}, "prefill": {}}
-        for data_name in ALL_DATA_NAMES:
+        for data_name in ALL_DATA_NAMES:                # set all to 0
             total_results["decode"][data_name] = 0
             total_results["prefill"][data_name] = 0
-        for stage in ["decode", "prefill"]:
+        for stage in ["decode", "prefill"]:             # accumulate all layer values
             for layer_name, result in self.results[stage].items():
                 for data_name in ALL_DATA_NAMES:
                     total_results[stage][data_name] += (

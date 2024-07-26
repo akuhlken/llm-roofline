@@ -53,40 +53,40 @@ def get_linear_layers(model_params):
     }
 
 # name, input_names
-transformer_layer_graph={
-    "input":[],
-    "attn_norm": ["input"],
-    "q_proj":["attn_norm"],
-    "k_proj":["attn_norm"],
-    "v_proj":["attn_norm"],
-    "qk_matmul":["q_proj","k_proj"],
-    "softmax":["qk_matmul"],
-    "sv_matmul":["softmax","v_proj"],
-    "out_proj":["sv_matmul"],
-    "attn_add":["input","out_proj"],
-    "mlp_norm":["attn_add"],
-    "gate_proj":["mlp_norm"],
-    "up_proj":["mlp_norm"],
-    "mlp_act":["up_proj","gate_proj"],
-    "down_proj":["mlp_act"],
-    "mlp_add":["attn_add","down_proj"],
-    "output":["mlp_add"]
-}
+# transformer_layer_graph={
+#     "input":[],
+#     "attn_norm": ["input"],
+#     "q_proj":["attn_norm"],
+#     "k_proj":["attn_norm"],
+#     "v_proj":["attn_norm"],
+#     "qk_matmul":["q_proj","k_proj"],
+#     "softmax":["qk_matmul"],
+#     "sv_matmul":["softmax","v_proj"],
+#     "out_proj":["sv_matmul"],
+#     "attn_add":["input","out_proj"],
+#     "mlp_norm":["attn_add"],
+#     "gate_proj":["mlp_norm"],
+#     "up_proj":["mlp_norm"],
+#     "mlp_act":["up_proj","gate_proj"],
+#     "down_proj":["mlp_act"],
+#     "mlp_add":["attn_add","down_proj"],
+#     "output":["mlp_add"]
+# }
 
-flashattention_transformer_layer_graph={
-    "input":[],
-    "attn_norm": ["input"],
-    "q_proj":["attn_norm"],
-    "k_proj":["attn_norm"],
-    "v_proj":["attn_norm"],
-    "fused_attention":["q_proj","k_proj","v_proj"],
-    "out_proj":["fused_attention"],
-    "attn_add":["input","out_proj"],
-    "mlp_norm":["attn_add"],
-    "gate_proj":["mlp_norm"],
-    "up_proj":["mlp_norm"],
-    "mlp_act":["up_proj","gate_proj"],
-    "down_proj":["mlp_act"],
-    "mlp_add":["attn_add","down_proj"],
-    "output":["mlp_add"]
-}
+# flashattention_transformer_layer_graph={
+#     "input":[],
+#     "attn_norm": ["input"],
+#     "q_proj":["attn_norm"],
+#     "k_proj":["attn_norm"],
+#     "v_proj":["attn_norm"],
+#     "fused_attention":["q_proj","k_proj","v_proj"],
+#     "out_proj":["fused_attention"],
+#     "attn_add":["input","out_proj"],
+#     "mlp_norm":["attn_add"],
+#     "gate_proj":["mlp_norm"],
+#     "up_proj":["mlp_norm"],
+#     "mlp_act":["up_proj","gate_proj"],
+#     "down_proj":["mlp_act"],
+#     "mlp_add":["attn_add","down_proj"],
+#     "output":["mlp_add"]
+# }
