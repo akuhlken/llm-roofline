@@ -25,3 +25,44 @@ def huggingface_net_analysis(model_name, hardware, batchsize=1, seqlen=512,
         use_flashattention=use_flashattention
     )
     return results
+
+"""
+results is a dict with the following format:
+
+{
+    "decode": {
+            "layer_name": {
+                    "OPs": "",
+                    "memory_access": "",
+                    "arithmetic_intensity": "",
+                    "performance": "",
+                    "bound": "",
+                    "load_weight": "",
+                    "load_act": "",
+                    "store_act": "",
+                    "load_kv_cache": "",
+                    "store_kv_cache": "",
+                    "inference_time": ""
+            }
+    },
+    "prefill": {
+            "layer_name": {
+                    "OPs": "",
+                    "memory_access": "",
+                    "arithmetic_intensity": "",
+                    "performance": "",
+                    "bound": "",
+                    "load_weight": "",
+                    "load_act": "",
+                    "store_act": "",
+                    "load_kv_cache": "",
+                    "store_kv_cache": "",
+                    "inference_time": ""
+            }
+    },
+    "total_results": {
+        "decode": {},
+        "prefill": {}
+    }
+}
+"""

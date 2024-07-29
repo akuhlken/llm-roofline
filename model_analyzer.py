@@ -140,43 +140,6 @@ class ModelAnalyzer:
         use_flashattention: use flash attention/flash decoding
         kv_token_ratio: use this for KV compression
 
-        return is a dict with the following format:
-        {
-            "decode": {
-                    "layer_name": {
-                            "OPs": "",
-                            "memory_access": "",
-                            "arithmetic_intensity": "",
-                            "performance": "",
-                            "bound": "",
-                            "load_weight": "",
-                            "load_act": "",
-                            "store_act": "",
-                            "load_kv_cache": "",
-                            "store_kv_cache": "",
-                            "inference_time": ""
-                    }
-            },
-            "prefill": {
-                    "layer_name": {
-                            "OPs": "",
-                            "memory_access": "",
-                            "arithmetic_intensity": "",
-                            "performance": "",
-                            "bound": "",
-                            "load_weight": "",
-                            "load_act": "",
-                            "store_act": "",
-                            "load_kv_cache": "",
-                            "store_kv_cache": "",
-                            "inference_time": ""
-                    }
-            },
-            "total_results": {
-                "decode": {},
-                "prefill": {}
-            }
-        }
         """
         assert seqlen > 0
         assert batchsize > 0
