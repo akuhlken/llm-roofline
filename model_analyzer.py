@@ -21,7 +21,7 @@ ALL_DATA_NAMES = [
 class ModelAnalyzer:
     def __init__(self, model_id, hardware, config_file=None, source="huggingface"):
         """
-        source: 'huggingface' or 'DiT'
+        source: 'huggingface' or path to JSON file
         """
         self.model_id = model_id
         self.hardware = hardware
@@ -41,15 +41,12 @@ class ModelAnalyzer:
             self.model_params = AutoConfig.from_pretrained(
                 model_id, trust_remote_code=True
             )
-        else:
-            if not os.path.exists(f"model_params/{source}.py"):
-                raise Exception(f"model_params/{source}.py is not found")
-            # from model_params.DiT import model_params
-            module=importlib.import_module(f"model_params.{source}")
-            self.model_params = module.model_params[model_id]
+        else: # Using JSON source
+            if not os.path.exists(source):
+                raise Exception(source)
+            self.model_params = source
         self.config = importlib.import_module(
-            config_file.replace("/", ".").replace(".py", "")
-        )
+            config_file.replace("/", ".").replace(".py", ""))
         print(self.config)
 
         # temporary variables
