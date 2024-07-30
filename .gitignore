@@ -2,3 +2,4 @@ llm-env/
 output/
 *.pyc
 *.csv
+*.json

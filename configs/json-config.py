@@ -1,27 +1,31 @@
+import json
+
+def _get_data(file):
+    with open(file, 'r') as f:
+        data = json.load(f)
+        return data
 
 # JSON config methods:
-# TODO: extract correct values from json input)
 def get_num_attention_heads(json):
-    print(json)
-    return 32
+    return _get_data(json)['num_attention_heads']
 
 def get_hidden_size(json):
-    return 4096
+    return _get_data(json)['hidden_size']
 
 def get_num_key_value_heads(json):
-    return 32
+    return _get_data(json)['num_key_value_heads']
 
 def get_norm_layers(json):
-    return ["attn_norm", "mlp_norm"] #TODO: Can we store this in the JSON
+    return _get_data(json)['norm_layers']
 
 def get_num_hidden_layers(json):
-    return 32
+    return _get_data(json)['num_hidden_layers']
 
 def get_intermediate_size(json):
-    return 11008
+    return _get_data(json)['intermediate_size']
 
 def get_vocab_size(json):
-    return 32000
+    return _get_data(json)['vocab_size']
 
 def post_process(json,args):
     hiddensize=get_hidden_size(json)
@@ -48,7 +52,7 @@ def get_linear_layers(json):
         "k_proj":[hidden_size, hidden_size*key_value_heads/attention_heads],
         "v_proj":[hidden_size, hidden_size*key_value_heads/attention_heads],
         "out_proj":[hidden_size, hidden_size],
-        "gate_proj":[hidden_size, intermediate_size],
+        "gate_proj":[hidden_size, intermediate_size], #TODO I belive not all LLM have this
         "up_proj":[hidden_size,intermediate_size],
         "down_proj":[intermediate_size, hidden_size],
     }
