@@ -23,6 +23,6 @@ hardware_params = {
     # Intel Skylake-X (Skylake-X, Cascade Lake) Intel Xeon Phi (Knights Landing, Knights Mill) Intel Ice Lake, Tiger Lake and Rocket Lake
     # support AVX-512 & FMA (512-bit), they has throughput of 1 cycle
     # https://www.intel.com/content/www/us/en/products/sku/230496/intel-core-i913900k-processor-36m-cache-up-to-5-80-ghz/specifications.html
-    "intel_13900k":{"bandwidth":89.6e9, "FP16":8*5.4e9*(512/16),"onchip_buffer": 36e6}
-    
+    "intel_13900k":{"bandwidth":89.6e9, "FP16":8*5.4e9*(512/16),"onchip_buffer": 36e6},
+    "intel_xeon_E5-2699":{"bandwidth":76.8e9, "FP16":22*3.6e9*(512/16),"onchip_buffer": 55e6}
 }
