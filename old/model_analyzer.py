@@ -33,13 +33,14 @@ class ModelAnalyzer:
                 if file.endswith(".py") and file.replace(".py", "") in model_id:
                     config_file = "configs/" + file
                 # print(f"auto search config file {config_file} {file} {model_id}")
-        assert (
-            config_file is not None
-        ), "config file is not found, please specify it manually."
+        # assert (
+        #     config_file is not None
+        # ), "config file is not found, please specify it manually."
         if source == "huggingface":
             self.model_params = AutoConfig.from_pretrained(
                 model_id, trust_remote_code=True
             )
+            print(self.model_params)
         else: # Using JSON source
             if not os.path.exists(source):
                 raise Exception(source)
@@ -423,11 +424,11 @@ class ModelAnalyzer:
         # memory footprint
         weight_kv_footprint = (
             total_results["prefill"]["load_weight"]
-            + total_results["prefill"]["store_kv_cache"]
+            + total_results["prefill"]["store_kv_cache"] # sum of load_weight and store_kv_cache from every layer
         )
         decode_tmp_act = 0
         for layer_name, result in self.results["decode"].items():
-            decode_tmp_act += result["store_act"]
+            decode_tmp_act += result["store_act"] # for every layer in decode, accumulate store_act
         total_results["decode"]["memory_consumption"] = (
             decode_tmp_act + weight_kv_footprint
         )
