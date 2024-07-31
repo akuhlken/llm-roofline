@@ -27,11 +27,11 @@ class HarwareSimulator:
         memory_access = self.load_weight + self.load_act + self.store_act
         arithmetic_intensity, performance, bound = self._roofline_analyze(bandwidth, max_OPS, self.ops, memory_access)
         inference_time = self.ops / performance
-        return inference_time, arithmetic_intensity, performance
+        return inference_time, arithmetic_intensity, performance, bound
 
     def get_roofline(self):
         bandwidth, max_OPS, onchip_buffer = self._get_hardware_info()
-        inference_time, arithmetic_intensity, performance = self.get_network_analysis()
+        inference_time, arithmetic_intensity, performance, bound= self.get_network_analysis()
         fig=plt.figure(figsize=(5, 3))
         y_max = max_OPS
         turning_point = y_max / bandwidth

@@ -1,10 +1,10 @@
 from hardware_simulator import HarwareSimulator
-import old.temp as temp
+#import old.temp as temp
 import json
 
-result = temp.huggingface_net_analysis("meta-llama/Llama-2-7b-hf", "intel_13900k")
-print(result["total_results"]) # time: 0.15061676
-#result = temp.json_net_analysis("llamatest.json", "intel_13900k")
+# result = temp.huggingface_net_analysis("meta-llama/Llama-2-7b-hf", "intel_13900k")
+# print(result["total_results"]) # time: 0.15061676
+# result = temp.json_net_analysis("llamatest.json", "intel_13900k")
 
 def write_model_json():
     data = {
